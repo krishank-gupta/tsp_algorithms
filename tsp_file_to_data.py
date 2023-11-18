@@ -1,0 +1,49 @@
+import math
+
+def euclidean_distance(coord1, coord2):
+    return math.ceil(math.sqrt((coord1[0] - coord2[0]) ** 2 + (coord1[1] - coord2[1]) ** 2))
+
+# Given .tsp data
+tsp_data = """
+1 20833.3333 17100.0000
+2 20900.0000 17066.6667
+3 21300.0000 13016.6667
+4 21600.0000 14150.0000
+5 21600.0000 14966.6667
+6 21600.0000 16500.0000
+7 22183.3333 13133.3333
+8 22583.3333 14300.0000
+9 22683.3333 12716.6667
+10 23616.6667 15866.6667
+11 23700.0000 15933.3333
+12 23883.3333 14533.3333
+13 24166.6667 13250.0000
+14 25149.1667 12365.8333
+15 26133.3333 14500.0000
+16 26150.0000 10550.0000
+17 26283.3333 12766.6667
+18 26433.3333 13433.3333
+19 26550.0000 13850.0000
+20 26733.3333 11683.3333
+21 27026.1111 13051.9444
+22 27096.1111 13415.8333
+23 27153.6111 13203.3333
+24 27166.6667 9833.3333
+25 27233.3333 10450.0000
+26 27233.3333 11783.3333
+27 27266.6667 10383.3333
+28 27433.3333 12400.0000
+29 27462.5000 12992.2222
+"""
+
+# Parse the .tsp data
+lines = tsp_data.strip().split('\n')
+coordinates = [list(map(float, line.split()[1:])) for line in lines]
+
+# Calculate Euclidean distances
+dimension = len(coordinates)
+distance_matrix = [[euclidean_distance(coordinates[i], coordinates[j]) for j in range(dimension)] for i in range(dimension)]
+
+# Print the distance matrix
+for row in distance_matrix:
+    print(f"{row},")
