@@ -27,7 +27,6 @@ def held_karp(distance_matrix):
         memo[(mask, current_city)] = min_cost
         return min_cost
 
-    # Initialize the mask with only the starting city visited
     start_mask = 1
     return tsp(start_mask, 0)
 
